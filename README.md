@@ -1,6 +1,6 @@
-# maintenance-cont
+# com.github.micchon.maintenance-com.github.micchon.cont
 
-[@hexx](https://github.com/hexx)さんの[ActionCont](https://github.com/hexx/action-cont)を用いた、メンテナンス状態を判定するモジュールです。
+[@hexx](https://github.com/hexx)さんの[ActionCont](https://github.com/hexx/action-com.github.micchon.cont)を用いた、メンテナンス状態を判定するモジュールです。
 
 # 概要
 
