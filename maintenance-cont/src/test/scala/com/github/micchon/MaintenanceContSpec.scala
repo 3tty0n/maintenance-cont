@@ -1,7 +1,7 @@
 package com.github.micchon
 
-import com.github.micchon.maintenance.cont._
-import com.github.micchon.maintenance.value.Operation
+import com.github.micchon.app.cont._
+import com.github.micchon.app.value.Operation
 import org.scalatest._
 import play.api.http.Status
 import play.api.mvc.Results

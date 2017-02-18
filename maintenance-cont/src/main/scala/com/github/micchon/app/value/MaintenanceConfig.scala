@@ -1,4 +1,4 @@
-package com.github.micchon.maintenance.value
+package com.github.micchon.app.value
 
 object MaintenanceConfig {
   case object FilePath extends MaintenanceConfig("resources/maintenance/operation")

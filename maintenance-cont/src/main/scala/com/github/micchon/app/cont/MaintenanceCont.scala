@@ -1,10 +1,10 @@
-package com.github.micchon.maintenance.cont
+package com.github.micchon.app.cont
 
 import java.io.File
 
 import com.github.micchon.cont.ActionCont
-import com.github.micchon.maintenance.value.Operation
-import com.github.micchon.maintenance.value.{MaintenanceConfig => Config}
+import com.github.micchon.app.value.Operation
+import com.github.micchon.app.value.{MaintenanceConfig => Config}
 import play.api.mvc.{AnyContent, Request, Result, Results}
 
 import scala.concurrent.ExecutionContext.Implicits.global
