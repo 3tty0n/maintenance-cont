@@ -1,6 +1,6 @@
 # maintenance-cont
 
-[@hexx](https://github.com/hexx)さんの[ActionCont](https://github.com/hexx/action-cont)を利用してメンテナンス状態を判定するActionContを判定するモジュールです。
+[@hexx](https://github.com/hexx)さんの[ActionCont](https://github.com/hexx/action-cont)を用いた、メンテナンス状態を判定するモジュールです。
 
 # 概要
 
@@ -17,7 +17,7 @@
 
 である必要があります。更に言うと、コントローラの処理が始まる前にこの処理が入れば理想です。
 
-それを、ActionContを使って取り扱いやすくし、コントローラの前処理として挿入できるよう実現したのがこのモジュールです。
+それを、ActionContを使って取り扱いやすくし、コントローラの前処理として挿入できるようにしたのがこのモジュールです。
 
 # License
 
