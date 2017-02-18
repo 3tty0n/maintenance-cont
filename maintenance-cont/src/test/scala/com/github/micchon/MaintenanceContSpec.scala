@@ -1,29 +1,45 @@
 package com.github.micchon
 
-import akka.util.Timeout
 import com.github.micchon.maintenance.cont._
 import com.github.micchon.maintenance.value.Operation
 import org.scalatest._
 import play.api.http.Status
 import play.api.mvc.Results
-import play.api.test.{FakeRequest, Helpers}
+import play.api.test.FakeRequest
+import play.api.test.Helpers
+import play.api.test.Helpers._
+
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration._
 
 class MaintenanceContSpec extends FlatSpec {
 
-  implicit val request = FakeRequest()
-  implicit val duration: Timeout = 20.seconds
+  trait SetUp {
+    implicit val request = FakeRequest()
+  }
 
-  "MaintenanceFlowCont" should "メンテナンス状態の場合は 503 ServiceUnavailable" in {
+  "MaintenanceCont" should "メンテナンス状態の場合は 503 ServiceUnavailable" in new SetUp {
+    val cont = MaintenanceCont.flow(Operation.Transaction)(request) {
+      _ => Future.successful(Results.Ok)
+    }
+    assert(Helpers.status(cont) === Status.SERVICE_UNAVAILABLE)
+  }
+
+  it should "メンテナンス状態でない場合は 200 Ok" in new SetUp {
+    val cont = MaintenanceCont.flow(Operation.Agency)(request) {
+      _ => Future.successful(Results.Ok)
+    }
+    assert(Helpers.status(cont) === Status.OK)
+  }
+
+  "MaintenanceFlowCont" should "メンテナンス状態の場合は 503 ServiceUnavailable" in new SetUp {
     val action = MaintenanceFlowCont.flow(Operation.Transaction) {
       _ => Future.successful(Results.Ok)
     }
     assert(Helpers.status(action) === Status.SERVICE_UNAVAILABLE)
   }
 
-  it should "メンテナンス状態でない場合は 200 OK" in {
+  it should "メンテナンス状態でない場合は 200 OK" in new SetUp {
     val action = MaintenanceFlowCont.flow(Operation.Agency) {
       _ => Future.successful(Results.Ok)
     }
