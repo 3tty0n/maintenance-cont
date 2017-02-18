@@ -11,9 +11,12 @@ lazy val allDependencies = {
   lazy val playVersion = "2.5.12"
   Seq(
     "org.scalatest" %% "scalatest" % "3.0.1",
+    "org.scalamock" %% "scalamock-scalatest-support" % "3.4.2" % Test,
+    "org.mockito" % "mockito-core" % "2.7.9",
     "org.scalaz" %% "scalaz-core" % "7.2.8",
     "com.typesafe.play" %% "play" % playVersion,
-    "com.typesafe.play" %% "play-test" % playVersion % "test"
+    "com.typesafe.play" %% "play-test" % playVersion % "test",
+    "org.slf4j" % "slf4j-simple" % "1.7.23"
   )
 }
 
