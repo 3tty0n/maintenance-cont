@@ -21,6 +21,9 @@ lazy val root = (project in file(".")).
   settings(
     commonSettings: _*
   ).
+  settings(
+    name := "maintenance-action-cont"
+  ).
   aggregate(
     action,
     maintenance
