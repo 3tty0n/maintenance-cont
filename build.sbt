@@ -12,7 +12,6 @@ lazy val allDependencies = {
   Seq(
     "org.scalatest" %% "scalatest" % "3.0.1",
     "org.scalaz" %% "scalaz-core" % "7.2.8",
-    "org.typelevel" %% "scalaz-contrib-validation" % "0.2",
     "com.typesafe.play" %% "play" % playVersion,
     "com.typesafe.play" %% "play" % playVersion % "test"
   )
