@@ -13,7 +13,7 @@ lazy val allDependencies = {
     "org.scalatest" %% "scalatest" % "3.0.1",
     "org.scalaz" %% "scalaz-core" % "7.2.8",
     "com.typesafe.play" %% "play" % playVersion,
-    "com.typesafe.play" %% "play" % playVersion % "test"
+    "com.typesafe.play" %% "play-test" % playVersion % "test"
   )
 }
 
