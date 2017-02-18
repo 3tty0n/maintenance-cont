@@ -1,4 +1,4 @@
-package com.github.micchon.maintenance
+package com.github.micchon.maintenance.value
 
 import scala.reflect.io.Path
 

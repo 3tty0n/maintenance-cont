@@ -1,4 +1,4 @@
-package com.github.micchon.maintenance
+package com.github.micchon.maintenance.request
 
 sealed trait MaintenanceRequest
 case object UnderMaintenance extends MaintenanceRequest

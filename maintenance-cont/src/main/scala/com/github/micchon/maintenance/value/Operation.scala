@@ -1,4 +1,4 @@
-package com.github.micchon.maintenance
+package com.github.micchon.maintenance.value
 
 object Operation {
   case object Transaction extends Operation("transaction")
