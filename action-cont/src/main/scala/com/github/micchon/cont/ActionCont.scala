@@ -1,12 +1,18 @@
-package cont
+package com.github.micchon.cont
 
 import play.api.mvc.{Action, AnyContent, Request, Result}
+
 import scala.concurrent.{ExecutionContext, Future}
+import scala.concurrent.ExecutionContext.Implicits.global
 import scalaz._
+import Scalaz._
 
 object ActionCont extends IndexedContsTInstances with IndexedContsTFunctions {
   def apply[A](f: (A => Future[Result]) => Future[Result]): ActionCont[A] =
     ContT(f)
+
+  def unit(implicit ec: ExecutionContext): ActionCont[Unit] =
+    ActionCont.successful(())
 
   def fromFuture[A](future: => Future[A])(implicit ec: ExecutionContext): ActionCont[A] =
     ActionCont(future.flatMap(_))

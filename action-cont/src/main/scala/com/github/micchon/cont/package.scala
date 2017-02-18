@@ -1,3 +1,5 @@
+package com.github.micchon
+
 import play.api.mvc.Result
 import scala.concurrent.Future
 import scalaz.ContT
