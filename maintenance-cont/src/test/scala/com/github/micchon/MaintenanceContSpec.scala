@@ -1,5 +1,7 @@
 package com.github.micchon
 
+import java.io.File
+
 import com.github.micchon.app.cont._
 import com.github.micchon.app.value.Operation
 import org.scalatest._
@@ -11,6 +13,7 @@ import play.api.test.Helpers._
 
 import scala.concurrent.Future
 import scala.sys.process.Process
+import scala.util.control.NonFatal
 
 class MaintenanceContSpec extends FlatSpec {
 
@@ -21,8 +24,11 @@ class MaintenanceContSpec extends FlatSpec {
   def testRun[A](name: String*)(f: => A): A = {
     try {
       val path = "resources/maintenance/operation"
-      name.map(n => Process(s"mkdir -p $path && touch $path/$n.maintenance").run())
+      Process(s"mkdir -p $path").run()
+      name.map(n => Process(s"touch $path/$n.maintenance").run())
       f
+    } catch {
+      case NonFatal(_) => f
     } finally {
       Process(s"rm -rf resources").run()
     }

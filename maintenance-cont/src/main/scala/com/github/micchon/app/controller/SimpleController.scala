@@ -3,9 +3,7 @@ package com.github.micchon.app.controller
 import com.github.micchon.app.cont.MaintenanceCont
 import com.github.micchon.app.value.Operation
 import play.api.mvc.Action
-import play.api.mvc.AnyContent
 import play.api.mvc.Controller
-import play.api.mvc.Request
 import play.api.mvc.Results
 import scala.concurrent.Future
 
@@ -18,3 +16,5 @@ class SimpleController extends Controller {
   }
 
 }
+
+object SimpleController extends SimpleController

@@ -5,15 +5,15 @@ import java.io.File
 import com.github.micchon.cont.ActionCont
 import com.github.micchon.app.value.Operation
 import com.github.micchon.app.value.{MaintenanceConfig => Config}
-import play.api.mvc.{AnyContent, Request, Result, Results}
+import play.api.mvc.{Request, Result, Results}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
-object MaintenanceCont {
+abstract class MaintenanceCont {
 
-  def flow(operation: Operation*)(implicit request: Request[AnyContent]): ActionCont[Request[AnyContent]] =
-    ActionCont((f: Request[AnyContent] => Future[Result]) =>
+  def flow[A](operation: Operation*)(implicit request: Request[A]): ActionCont[Request[A]] =
+    ActionCont((f: Request[A] => Future[Result]) =>
       Future.sequence(operation.map(isUnderMaintenance)).flatMap {
         case result if result.forall(_ == false) => f(request)
         case _ => Future.successful(Results.ServiceUnavailable)
@@ -29,3 +29,5 @@ object MaintenanceCont {
     }
   }
 }
+
+object MaintenanceCont extends MaintenanceCont
